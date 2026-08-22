@@ -15,7 +15,9 @@ interface IArventisVault {
 
     // Events
     event Deposit(address indexed caller, address indexed owner, uint256 assets, uint256 shares);
-    event Withdraw(address indexed caller, address indexed receiver, address indexed owner, uint256 assets, uint256 shares);
+    event Withdraw(
+        address indexed caller, address indexed receiver, address indexed owner, uint256 assets, uint256 shares
+    );
     event YieldHarvested(uint256 amount, uint256 timestamp);
 
     function asset() external view returns (address);

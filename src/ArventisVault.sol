@@ -16,9 +16,7 @@ contract ArventisVault is ERC20, ReentrancyGuard, IArventisVault {
 
     IERC20 private immutable _asset;
 
-    constructor(IERC20 underlyingAsset, string memory name_, string memory symbol_) 
-        ERC20(name_, symbol_) 
-    {
+    constructor(IERC20 underlyingAsset, string memory name_, string memory symbol_) ERC20(name_, symbol_) {
         if (address(underlyingAsset) == address(0)) revert Unauthorized();
         _asset = underlyingAsset;
     }
@@ -70,7 +68,12 @@ contract ArventisVault is ERC20, ReentrancyGuard, IArventisVault {
     }
 
     /// @notice Withdraw assets from vault by burning shares
-    function withdraw(uint256 assets, address receiver, address owner) external override nonReentrant returns (uint256 shares) {
+    function withdraw(uint256 assets, address receiver, address owner)
+        external
+        override
+        nonReentrant
+        returns (uint256 shares)
+    {
         if (assets == 0) revert WithdrawZero();
         if (receiver == address(0) || owner == address(0)) revert Unauthorized();
 
