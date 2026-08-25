@@ -91,6 +91,6 @@ contract ArventisVault is ERC20, ReentrancyGuard, IArventisVault {
         _burn(owner, shares);
         _asset.safeTransfer(receiver, assets);
 
-        emit Withdraw(msg.sender, receiver, owner, assets, shares); 
+        emit Withdraw(msg.sender, receiver, owner, assets, shares);
     }
 }
