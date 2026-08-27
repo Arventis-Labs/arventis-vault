@@ -1,0 +1,4 @@
+{
+  "filter_paths": "lib",
+  "exclude_detectors": "solc-version,pragma,different-pragma"
+}

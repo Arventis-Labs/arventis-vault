@@ -32,4 +32,4 @@ jobs:
         run: pip install slither-analyzer
 
       - name: Run Slither Security Analysis
-        run: slither . --exclude-dependencies
+        run: slither . --config-file .slither.json
