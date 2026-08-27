@@ -19,11 +19,7 @@ contract ArventisVault is ERC20, ReentrancyGuard, IArventisVault {
 
     IERC20 private immutable _asset;
 
-    constructor(
-        IERC20 underlyingAsset,
-        string memory name_,
-        string memory symbol_
-    ) ERC20(name_, symbol_) {
+    constructor(IERC20 underlyingAsset, string memory name_, string memory symbol_) ERC20(name_, symbol_) {
         if (address(underlyingAsset) == address(0)) revert Unauthorized();
         _asset = underlyingAsset;
     }
@@ -84,9 +80,7 @@ contract ArventisVault is ERC20, ReentrancyGuard, IArventisVault {
         uint256 totalShares = totalSupply();
         uint256 totalVaultAssets = totalAssets();
 
-        assets = (totalShares == 0 || totalVaultAssets == 0) 
-            ? shares 
-            : shares.mulDivUp(totalVaultAssets, totalShares);
+        assets = (totalShares == 0 || totalVaultAssets == 0) ? shares : shares.mulDivUp(totalVaultAssets, totalShares);
 
         _asset.safeTransferFrom(msg.sender, address(this), assets);
         _mint(receiver, shares);
@@ -94,11 +88,7 @@ contract ArventisVault is ERC20, ReentrancyGuard, IArventisVault {
         emit Deposit(msg.sender, receiver, assets, shares);
     }
 
-    function withdraw(
-        uint256 assets,
-        address receiver,
-        address owner
-    ) public nonReentrant returns (uint256 shares) {
+    function withdraw(uint256 assets, address receiver, address owner) public nonReentrant returns (uint256 shares) {
         if (assets == 0) revert ZeroAmount();
         if (receiver == address(0)) revert ZeroAddress();
 
@@ -118,11 +108,7 @@ contract ArventisVault is ERC20, ReentrancyGuard, IArventisVault {
         emit Withdraw(msg.sender, receiver, owner, assets, shares);
     }
 
-    function redeem(
-        uint256 shares,
-        address receiver,
-        address owner
-    ) public nonReentrant returns (uint256 assets) {
+    function redeem(uint256 shares, address receiver, address owner) public nonReentrant returns (uint256 assets) {
         if (shares == 0) revert ZeroShares();
         if (receiver == address(0)) revert ZeroAddress();
 

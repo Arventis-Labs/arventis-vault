@@ -16,7 +16,7 @@ contract VaultHandler is Test {
     constructor(ArventisVault _vault, MockERC20 _asset) {
         vault = _vault;
         asset = _asset;
-        
+
         // Initialize multiple test actors to simulate concurrent user interactions
         actors.push(address(0x1111));
         actors.push(address(0x2222));
@@ -69,7 +69,7 @@ contract ArventisVaultInvariants is StdInvariant, Test {
     function setUp() public {
         asset = new MockERC20("Mock Asset", "MCK");
         vault = new ArventisVault(asset, "Arventis Vault Share", "avSHARES");
-        
+
         handler = new VaultHandler(vault, asset);
 
         bytes4[] memory selectors = new bytes4[](4);
