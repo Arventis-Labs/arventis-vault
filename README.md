@@ -1,66 +1,25 @@
-## Foundry
+# Arventis Vault (ERC-4626)
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A low-level, highly gas-optimized, and audit-grade ERC-4626 Tokenized Vault implementation built with inline Yul/Assembly and rigorous invariant testing.
 
-Foundry consists of:
+Developed by **Arventis Labs** (Hesam Qorbani & Ali Elahi).
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+---
 
-## Documentation
+## 🛠 Features & Architecture
 
-https://book.getfoundry.sh/
+* **Inline Yul / Assembly Math:** Pure EVM assembly operations in `VaultMath.sol` for exact deposit/mint/withdraw/redeem conversions, defense against rounding inflation attacks, and maximum gas efficiency.
+* **Property-Based Invariants:** Over 11,000+ stateful fuzzing calls generated via Foundry to mathematically prove vault solvency under extreme edge cases.
+* **Automated Static Analysis:** Fully integrated Slither security analyzer in the CI/CD pipeline.
+* **Strict Code Quality:** Enforced `forge fmt` formatting and automated testing workflow on every push/PR.
 
-## Usage
+---
+
+## ⚡ Quickstart
+
+### Prerequisites
+* [Foundry](https://getfoundry.sh/)
 
 ### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+```bash
+forge build
