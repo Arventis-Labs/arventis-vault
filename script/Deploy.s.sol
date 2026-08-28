@@ -16,7 +16,11 @@ contract DeployScript is Script {
 
         vm.startBroadcast(deployerPrivateKey);
 
-        vault = new ArventisVault(IERC20(underlyingAsset), "Arventis Vault Token", "aVAULT");
+        vault = new ArventisVault(
+            IERC20(underlyingAsset),
+            "Arventis Vault Token",
+            "aVAULT"
+        );
 
         vm.stopBroadcast();
 
