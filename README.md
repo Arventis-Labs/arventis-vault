@@ -22,4 +22,4 @@ Developed by **Arventis Labs** (Hesam Qorbani & Ali Elahi).
 
 ### Build
 ```bash
-forge build
+forge build 
