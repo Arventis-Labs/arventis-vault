@@ -1,4 +1,4 @@
 {
   "filter_paths": "lib",
   "exclude_detectors": "solc-version,pragma,different-pragma,dangerous-strict-equalities"
-}
+} 
